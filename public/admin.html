@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <div class="login-box">
+                <h1>TechGeo Admin</h1>
+                <p>Subscriber & Email Management Dashboard</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p class="toggle-form">Don't have account? <a href="#" onclick="toggleForms(event)">Register</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="registerPage" class="page">
+            <div class="login-box">
+                <h1>Create Admin Account</h1>
+                <p>Register for TechGeo Dashboard</p>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <input type="text" id="regUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="regEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="regPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <p class="toggle-form">Already have account? <a href="#" onclick="toggleForms(event)">Login</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h2>TechGeo Admin</h2>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" onclick="switchTab('overview')" class="nav-item active" data-tab="overview">
+                        <i class="fas fa-chart-line"></i> Overview
+                    </a>
+                    <a href="#" onclick="switchTab('subscribers')" class="nav-item" data-tab="subscribers">
+                        <i class="fas fa-users"></i> Subscribers
+                    </a>
+                    <a href="#" onclick="switchTab('emails')" class="nav-item" data-tab="emails">
+                        <i class="fas fa-envelope"></i> Emails
+                    </a>
+                </nav>
+                <div class="sidebar-footer">
+                    <button onclick="logout()" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Header -->
+                <div class="header">
+                    <h1 id="pageTitle">Dashboard Overview</h1>
+                    <div class="user-info">
+                        <span id="adminUsername">Admin</span>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+
+                <!-- Overview Tab -->
+                <div id="overviewTab" class="tab active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon subscribers">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Total Subscribers</h3>
+                                <p class="stat-number" id="totalSubscribers">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon emails">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Total Emails</h3>
+                                <p class="stat-number" id="totalEmails">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon new">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>New Emails</h3>
+                                <p class="stat-number" id="newEmails">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon replied">
+                                <i class="fas fa-check-double"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Replied</h3>
+                                <p class="stat-number" id="repliedEmails">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-section">
+                        <h2>Recent Activity</h2>
+                        <div class="recent-grid">
+                            <div class="recent-box">
+                                <h3>Recent Subscribers</h3>
+                                <div id="recentSubscribers" class="recent-list"></div>
+                            </div>
+                            <div class="recent-box">
+                                <h3>New Emails</h3>
+                                <div id="recentEmails" class="recent-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscribers Tab -->
+                <div id="subscribersTab" class="tab">
+                    <div class="tab-header">
+                        <h2>Subscribers Management</h2>
+                        <button onclick="refreshSubscribers()" class="btn-secondary">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="subscribers-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>Subscribed Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscribersList"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Emails Tab -->
+                <div id="emailsTab" class="tab">
+                    <div class="tab-header">
+                        <h2>Email Management</h2>
+                        <button onclick="refreshEmails()" class="btn-secondary">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="emails-list">
+                        <div id="emailsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div id="replyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReplyModal()">&times;</span>
+            <h2>Reply to Email</h2>
+            <div id="emailDetails" class="email-details"></div>
+            <form id="replyForm">
+                <div class="form-group">
+                    <label>Reply Message</label>
+                    <textarea id="replyMessage" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Reply</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>

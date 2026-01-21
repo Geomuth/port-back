@@ -1,0 +1,599 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Add this after the .btn styles and before the footer section */
+
+/* FAQ Section */
+#faq {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #1a2a6c;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #f5f7ff;
+}
+
+.faq-question.active {
+    background-color: #f0f4ff;
+}
+
+.faq-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.faq-question.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-answer.active {
+    padding: 0 25px 25px 25px;
+    max-height: 500px;
+}
+
+.faq-answer p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Update existing responsive styles */
+@media screen and (max-width: 768px) {
+    /* ... existing styles ... */
+    
+    /* Add FAQ responsive styles */
+    .faq-question {
+        padding: 18px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer {
+        padding: 0 20px;
+    }
+    
+    .faq-answer.active {
+        padding: 0 20px 20px 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* ... existing styles ... */
+    
+    /* FAQ mobile adjustments */
+    .faq-question {
+        padding: 16px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-icon {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 480px) {
+    .clearfix {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        width: 140px;
+        padding: 8px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .clearfix img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .clearfix p {
+        font-size: 0.85rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .nav-links {
+        padding: 1rem 0;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+    }
+    
+    .nav-links.active {
+        max-height: 300px;
+    }
+    
+    .nav-links li {
+        padding: 0.8rem 0;
+    }
+}@media screen and (max-width: 600px) {
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        padding: 14px 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    background-image: url("tech-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, #1a2a6c, #2a3eb1, #3a56d4);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Floating Box */
+.clearfix {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #1a2a6c, #3a56d4);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    width: 220px;
+    border: 2px solid #3a56d4;
+}
+
+.clearfix img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.clearfix p {
+    margin: 0;
+    font-weight: bold;
+    color: white;
+}
+
+.clearfix a {
+    color: #4df0ac;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.clearfix a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.main {
+    max-width: 1200px;
+    margin: 100px auto 50px;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    word-break: break-all;
+    color: #1a2a6c;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.main > p {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Services Section */
+#services h3 {
+    font-size: 1.5rem;
+    color: #1a2a6c;
+    text-align: center;
+    margin: 15px 0;
+}
+
+#services p {
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* Grid Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px -10px;
+}
+
+.column {
+    flex: 1 0 calc(25% - 20px);
+    margin: 10px;
+    min-width: 250px;
+}
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.content img {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Contacts Section */
+#contacts {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #7089eb, #8e93b3);
+    color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+}
+
+.contacts-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.contact-details {
+    margin-top: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(175, 50, 50, 0.795);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    background: #fdeeee;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    color: #1a2a6c;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    background: #b34418;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #169e16;
+}
+
+/* Footer Section */
+footer {
+    background: #18191f;
+    color: #fff;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #4df0ac;
+}
+
+.footer-column p {
+    margin-bottom: 15px;
+    color: #ccc;
+    text-align: left;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #4df0ac;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: rgb(124, 253, 4);
+    transition: background 0.3s;
+}
+
+.social-links a:hover {
+    background: #f31404;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    .column {
+        flex: 1 0 calc(33.333% - 20px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1a2a6c;
+        padding: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .column {
+        flex: 1 0 calc(50% - 20px);
+    }
+    
+    .contacts-content {
+        flex-direction: column;
+    }
+    
+    .clearfix {
+        width: 180px;
+        padding: 10px;
+    }
+    
+    .clearfix img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 1 0 100%;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    .main {
+        margin-top: 80px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .clearfix {
+        width: 160px;
+        right: 10px;
+        bottom: 20px;
+    }
+}
